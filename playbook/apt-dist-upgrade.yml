@@ -1,6 +1,6 @@
 #!/bin/ansible-playbook
 
-- hosts: raspi-1
+- hosts: raspberry
   become: yes
   tasks:
     - name: Update sources.list with bullseye
@@ -23,5 +23,7 @@
           - libgcc-8-dev
     - name: Upgrade the OS (apt-get full-upgrade)
       apt:
-        upgrade: dist
+        upgrade: full
         autoremove: yes
+    - name: Reboot
+      reboot:
